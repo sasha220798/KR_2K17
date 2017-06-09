@@ -1,4 +1,5 @@
 from tkinter import*
+from random import*
 from math import*
 from tkinter.filedialog import *
 import string
@@ -12,16 +13,23 @@ def task(x):
     textarea_solve.insert(END, z)
 
 def task_1(task):
-    N=int(input("Введите количество этажей в доме"))    # Этажей в доме
-    K=int(input("Введите количество квартир на площадке"))    # Квартир на площадке
-    M=int(input("Введите количество подъездов в доме"))    # Подъезов в доме
-    F=int(input("Введите номер квартиры"))    # Номер хаты
-    P=F/(N*K)+ 1 #Номер подъезда
-    G=F/((N*K)/K)+1 #Номер этажа
+    floor_num=int(input("Введите количество этажей в доме: ")) #Количество этажей
+    home=int(input("Введите номер квартиры: ")) #Номер квартиры
+    porch_num=int(input("Введите количество подъездов: ")) #Количество подъездов
+    home_count=int(input("Введите количество квартир на площадке: ")) #Квартир на площадке
+    # home_in_porch - квартир в подъезде
+    # porch - номер подъезда
+    # floor - номер этажа
+    home_in_porch = home_count * floor_num
+    porch = home / home_in_porch
+    porch = ceil(porch)
+    floor = (home - (porch-1) * home_in_porch) / home_count
+    floor_solution = ceil(floor)
+    print("Квартира на ", floor_solution, " этаже, в подъезде ", porch)
     textarea_task.delete(1.0, END)
-    textarea_task.insert(END, "В N-этажном доме M подъездов. На каждой лестничной площадке К квартир. Нумерация квартир в доме сквозная, на¬чиная с 1. Написать программу, которая по номеру квартиры определяет номер подъезда и этажа, на котором находится квартира.")
+    textarea_task.insert(END, "В N-этажном доме M подъездов. На каждой лестничной площадке К квартир. Нумерация квартир в доме сквозная, на¬чиная с 1. на площадке первого этажа по Р<К квартир. Написать программу, которая по номеру квартиры определяет номер подъезда и этажа, на котором находится квартира.")
     textarea_solve.delete(1.0, END)
-    textarea_solve.insert(END, P, G )
+    textarea_solve.insert(END,"Квартира на ", (floor_solution), " этаже, в подъезде ", (porch))
 
 def task_2(task):
     textarea_task.delete(1.0,END)
@@ -41,24 +49,15 @@ def task_2(task):
         textarea_solve.insert(END,"окружность с центром в начале координат и радиусом", (r), " и прямая, проходящая через точки ", (x,y),(x,-y), ", не пересекаются и не касаются")
 
 def task_3(task):
-    r=int(input("Введите радиус круга "))
-    x=int(input("Введите положительное значение x "))
-    y=int(input("Введите положительное значение y "))
-    if x<r:
-        textarea_task.delete(1.0,END)
-        textarea_solve.delete(1.0,END)
-        textarea_task.insert(END,"окружность")
-        textarea_solve.insert(END,"окружность с центром в начале координат и радиусом", r, "и прямая, проходящая через точки ", (x,y),(x,-y),",пересекаются")                   
-    elif x==r:
-        textarea_task.delete(1.0,END)
-        textarea_solve.delete(1.0,END)
-        textarea_task.insert(END,"окружность")
-        textarea_solve.insert(END,"окружность с центром в начале координат и радиусом", r, "и прямая, проходящая через точки ", (x,y),(x,-y),",касаются")
-    else:
-        textarea_task.delete(1.0,END)
-        textarea_solve.delete(1.0,END)
-        textarea_task.insert(END,"окружность")
-        textarea_solve.insert(END,"окружность с центром в начале координат и радиусом", r, "и прямая, проходящая через точки ", (x,y),(x,-y),",не пересекаются и не касаются")
+    n = int(input("Задайте n: "))
+    i = 0
+    while i < n:
+        i = 1 + (3*n-2)
+    print(i)
+    textarea_task.delete(1.0,END)
+    textarea_solve.delete(1.0,END)
+    textarea_task.insert(END,"Написать программу, позволяющую вычислить с помощью цикла: 1+4+7+...+(3n-2), где n задается с клавиатуры")
+    textarea_solve.insert(END, i)
 
 def task_4(task):
     a=2**2;
@@ -69,13 +68,18 @@ def task_4(task):
     textarea_solve.insert(END, "А здесь - его решение_5")
 
 def task_5(task):
-    A=int(input("Введите число А: "))
-    B=int(input("Введите число В: "))
-    
+    N=int(randrange(1,100))
+    res = [x for x in range(1,N)]
+    print (res)
+    K=int(randrange(1,100))
+    res_1 = [x for x in range(1, K)]
+    print (res_1)
+    res_res=list(set(res)-set(res_1))
+    print(res_res)
     textarea_task.delete(1.0, END)
-    textarea_task.insert(END, "Здесь находится текст задания №6")
+    textarea_task.insert(END, "Два массива содержат по n целых положительных чисел (задаются случайным образом). Написать программу создания третьего масси¬ва, содержащего разность этих чисел.")
     textarea_solve.delete(1.0, END)
-    textarea_solve.insert(END, "А здесь - его решение_6")
+    textarea_solve.insert(END, res_res)
 
 def task_6(task):
     a=2**2;
@@ -117,7 +121,7 @@ def task_10(task):
 
     
 test=Tk()
-test.title("Контрольная работа. Малахов Д.А. Вариант № 9")
+test.title("Контрольная работа. Лепёхина Дарья Вариант № 4")
 textarea_task=Text(test, width=50, height=15,font="12",wrap=WORD)
 textarea_solve=Text(test, width=50, height=15,font="12",wrap=WORD)
 Labe_task=Label(test, text="Задача")
