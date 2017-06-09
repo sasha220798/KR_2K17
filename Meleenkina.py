@@ -4,22 +4,25 @@ import string
 import fileinput
 
 def task(x):
-    x=(2.468/(3.69/(10**3)**1/3)**1/5)
-    y=25/125/(6.99/(300000)**2)**1/9
-    z=(x**2+y**2)/(1-(x**2-y**2)/2)
+    A=int(input("Введите число А: "))
+    B=int(input("Введите число В: "))
+    V=(A+B)/2
+    print(V)
     textarea_task.delete(1.0, END)
-    textarea_task.insert(END, "Здесь находится текст задания №1")
+    textarea_task.insert(END, "Два целых числа вводятся с клавиатуры. Написать прог¬рамму, находящую их среднее арифметическое. ")
     textarea_solve.delete(1.0, END)
-    textarea_solve.insert(END,z, "А здесь - его решение")
-    print("Success")
-
+    textarea_solve.insert(END, V)
+    
 def task_1(task):
-    p=5*5;
-    print (p)
+    k=int(input("Введите к-тую секунду: "))
+    M=k//60
+    H=k//3600
+    D=H//24
+    print(M, " minutes ", H, " hours ", D, " days")
     textarea_task.delete(1.0, END)
-    textarea_task.insert(END, "Здесь находится текст задания №2")
+    textarea_task.insert(END, "Идет k-я секунда суток. Написать программу для вычисления целого числа полных  часов, минут, секунд.")
     textarea_solve.delete(1.0, END)
-    textarea_solve.insert(END, "А здесь - его решение_2")
+    textarea_solve.insert(END, M," minutes ", H , " hours ", D , " days")
 
 def task_2(task):
     a=2**2;
@@ -93,7 +96,7 @@ def task_10(task):
 
     
 test=Tk()
-test.title("Контрольная работа. Малахов Д.А. Вариант № 9")
+test.title("Контрольная работа. Миленкина Александра Вариант № 5")
 textarea_task=Text(test, width=50, height=15,font="12",wrap=WORD)
 textarea_solve=Text(test, width=50, height=15,font="12",wrap=WORD)
 Labe_task=Label(test, text="Задача")

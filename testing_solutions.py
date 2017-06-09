@@ -38,4 +38,23 @@ def task_64():
     res_res=list(set(res)-set(res_1))
     print(res_res)
 
-task_64()
+#task_64()
+
+
+def task_15():
+    A=int(input("Введите число А: "))
+    B=int(input("Введите число В: "))
+    V=(A+B)/2
+    print(V)
+
+#task_15()
+
+
+def task_25():
+    k=int(input("Введите к-тую секунду: "))
+    M=k//60
+    H=k//3600
+    D=H//24
+    print(M, " minutes ", H, " hours ", D, " days")
+
+task_25()    
